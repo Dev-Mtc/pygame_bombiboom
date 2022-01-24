@@ -1,20 +1,17 @@
 import pygame
 
-#Player starting position
-X_POS = 500
-Y_POS = 600
 
 
 
 class Player(pygame.sprite.Sprite):
     
-    def __init__(self) : 
+    def __init__(self, surface : pygame.surface.Surface) : 
         super().__init__()
         self.is_alive = True
         self.healh = 100
         self.shield = 100
-        self.x_pos = X_POS
-        self.y_pos = Y_POS
+        self.x_pos = 500
+        self.y_pos = surface.get_height() - 200
         self.vel_y = 5
         self.animations = { "running" : False, "jumping" : False, "attacking" : False}
         self.last_side = {"left" : False, "right" : False}
@@ -78,8 +75,7 @@ class Player(pygame.sprite.Sprite):
         
      
         self.image = pygame.transform.scale(self.sprites_character[self.sprite_states_left], (150,150))
-        self.rect = self.image.get_rect()
-        
+    
         
     #
     # Manage movement
@@ -103,7 +99,10 @@ class Player(pygame.sprite.Sprite):
             self.sprite_states_left = 1
         self.sprite_states_left += 1 
         self.image = pygame.transform.scale(self.sprites_character[self.sprite_states_left], (150,150))
-                
+    
+    def get_pos(self):
+        return [self.x_pos, self.y_pos]
+            
     def jump(self):
         self.y_pos -= self.vel_y*4
         self.vel_y -= 1
@@ -115,7 +114,6 @@ class Player(pygame.sprite.Sprite):
         return self.animations["jumping"]     
     def set_jump_state(self, state : bool):
         self.animations["jumping"] = state
-
     
     #
     # Manage attacks
@@ -133,18 +131,16 @@ class Player(pygame.sprite.Sprite):
             
     def attack(self, surface : pygame.surface.Surface):
         self.animations["attacking"] = True
-        
         self.image = pygame.transform.scale(self.sprites_attacks[5], (150,150)) 
 
-        
-    
+           
     
     #
     # Draw update player 
     #        
     def draw_player(self, surface : pygame.surface.Surface):
         surface.blit(self.image,(self.x_pos,self.y_pos))
-        pygame.draw.circle(surface, (255,255,255), (self.x_pos + 75, self.y_pos +75) , 150, 1 , draw_top_left=True , draw_top_right=True)   
+        pygame.draw.circle(surface, (51, 153, 255), (self.x_pos + 75, self.y_pos +75) , 50, 2 , draw_top_left=True , draw_top_right=True)   
         
         
     def update_animation(self):

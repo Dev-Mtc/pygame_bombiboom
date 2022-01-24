@@ -28,11 +28,11 @@ class Interface:
         self.img_value_heal = self.font_heal.render(str(value) , True, self.color)
         
         # Draw font and interface
-        surface.blit(self.img_value_heal, (240, 52))
-        self.heal_bar_border = pygame.draw.rect(surface,self.border_color  , pygame.Rect(30, 50, 200, 20), 1 , border_radius=5)
-        self.heal_bar = pygame.draw.rect(surface,self.color, pygame.Rect(30, 50, value*2, 20), border_radius=5)
+        surface.blit(self.img_value_heal, ((surface.get_width()/2 + 110), (surface.get_height()- 40)))
+        self.heal_bar_border = pygame.draw.rect(surface,self.border_color  , pygame.Rect((surface.get_width()/2 - 100), (surface.get_height()- 40), 200, 20), 1 , border_radius=5)
+        self.heal_bar = pygame.draw.rect(surface,self.color, pygame.Rect((surface.get_width()/2 - 100), (surface.get_height()- 40), value*2, 20), border_radius=5)
         
-    def draw_shield_bar(self, value: int,surface: pygame.surface.Surface):
+    def draw_shield_bar(self, value: int, surface: pygame.surface.Surface):
         self.shield_color = (51, 153, 255)
         
         
@@ -40,6 +40,6 @@ class Interface:
         self.img_value_shield = self.font_shield.render(str(value) , True, self.shield_color)
         
         # Draw font and interface
-        surface.blit(self.img_value_shield, (240, 92))
-        self.shield_bar_border = pygame.draw.rect(surface,self.shield_color  , pygame.Rect(30, 90, 200, 20), 1, border_radius=5)
-        self.shield_bar = pygame.draw.rect(surface,self.shield_color, pygame.Rect(30, 90, value*2, 20), border_radius=5)
+        surface.blit(self.img_value_shield, ((surface.get_width()/2 +110), (surface.get_height()- 70)))
+        self.shield_bar_border = pygame.draw.rect(surface,self.shield_color  , pygame.Rect((surface.get_width()/2 - 100), (surface.get_height()- 70), 200, 20), 1, border_radius=5)
+        self.shield_bar = pygame.draw.rect(surface,self.shield_color, pygame.Rect((surface.get_width()/2 - 100), (surface.get_height()- 70), value*2, 20), border_radius=5)
