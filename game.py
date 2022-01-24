@@ -8,7 +8,9 @@ from enemies import Enemies
 WIDTH = 1200
 HEIGHT = 800
 
-
+###
+#   Main class of the game
+###
 class game: 
     
     def __init__(self) :
@@ -48,7 +50,9 @@ class game:
                     self.player.attack(self.screen)    
             
                 
-                
+    #
+    #  Tcheck user input for player movement
+    #           
     def userInput(self):
         if self.pressed_key.get(pygame.K_d) and self.player.x_pos + 150 < self.screen.get_size()[0]: 
             self.player.move_right(8)
@@ -63,7 +67,7 @@ class game:
         entities = self.enemies.get_entities_pos()
         
     #
-    # Main loop of the game
+    # Main game loop
     # 
     def run_game(self):
         self.running_game = True
@@ -77,7 +81,10 @@ class game:
             self.handle_event()
             self.userInput()
             pygame.display.flip()
-     
+           
+    #
+    # Main menu loop
+    # 
     def run_menu(self):
         self.running_menu = True
         while self.running_menu == True: 

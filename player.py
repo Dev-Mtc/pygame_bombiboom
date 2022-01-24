@@ -2,7 +2,9 @@ import pygame
 
 
 
-
+###
+#   Create a player 
+###
 class Player(pygame.sprite.Sprite):
     
     def __init__(self, surface : pygame.surface.Surface) : 
@@ -142,7 +144,9 @@ class Player(pygame.sprite.Sprite):
         surface.blit(self.image,(self.x_pos,self.y_pos))
         pygame.draw.circle(surface, (51, 153, 255), (self.x_pos + 75, self.y_pos +75) , 50, 2 , draw_top_left=True , draw_top_right=True)   
         
-        
+    #
+    # Update animation when the player dont move
+    #
     def update_animation(self):
         if self.animations["running"] == True :
             if self.last_side["left"] == True and self.last_side["right"] == False :

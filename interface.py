@@ -6,7 +6,9 @@ pygame.init()
 FONT_SIZE_HEAL = 25
 FONT_SIZE_SHIELD = 25
 
-
+###
+#   Creating bars for heal and shield 
+###
 class Interface:
     def __init__(self):
         self.heal_value = 0
@@ -46,7 +48,9 @@ class Interface:
         
         
         
-
+###
+#   Button class creating a simple rectangle button with specials attributes
+###
 class Button: 
     def __init__(self, x, y, width, height, content,font_size, bg_color, hover_color):
         self.x_pos = x
