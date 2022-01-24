@@ -3,7 +3,7 @@ from game_state import GameState
 
 
 
-game().run()
+game().run_menu()
     
 
 

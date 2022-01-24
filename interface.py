@@ -43,3 +43,47 @@ class Interface:
         surface.blit(self.img_value_shield, ((surface.get_width()/2 +110), (surface.get_height()- 70)))
         self.shield_bar_border = pygame.draw.rect(surface,self.shield_color  , pygame.Rect((surface.get_width()/2 - 100), (surface.get_height()- 70), 200, 20), 1, border_radius=5)
         self.shield_bar = pygame.draw.rect(surface,self.shield_color, pygame.Rect((surface.get_width()/2 - 100), (surface.get_height()- 70), value*2, 20), border_radius=5)
+        
+        
+        
+
+class Button: 
+    def __init__(self, x, y, width, height, content,font_size, bg_color, hover_color):
+        self.x_pos = x
+        self.y_pos = y
+        self.width_button = width
+        self.height_button = height
+        
+        self.color = bg_color
+        self.hover_color = hover_color
+        self.content = content
+        
+        
+        
+        self.rect_btn = pygame.Surface((self.width_button, self.height_button))
+        self.rect_btn.fill(self.color)
+        self.rect = self.rect_btn.get_rect()
+        self.rect.x = self.x_pos
+        self.rect.y = self.y_pos
+       
+        #init font 
+        self.font = pygame.font.SysFont("assets/fonts/good_times_rg.otf", font_size)
+        self.text_btn = self.font.render(str(content) , True, (0,0,0))
+        
+        self.rect_btn.blit(self.text_btn, (self.text_btn.get_rect(center=(self.width_button/2, self.height_button/2))))
+        
+    def is_pressed(self, mouse_pos, mouse_pressed : bool):
+        if self.rect.collidepoint(mouse_pos) and mouse_pressed[0]:
+            return True
+        return False
+    
+    def is_hovering(self, mouse_pos):
+        if self.rect.collidepoint(mouse_pos):
+            self.rect_btn.fill(self.hover_color)
+            self.text_btn = self.font.render(str(self.content) , True, (0,0,0))
+            self.rect_btn.blit(self.text_btn, (self.text_btn.get_rect(center=(self.width_button/2, self.height_button/2))))
+        
+        
+        
+
+    

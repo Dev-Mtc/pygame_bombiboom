@@ -120,9 +120,9 @@ class Player(pygame.sprite.Sprite):
     #   
     def get_healh(self): 
         return self.healh
-    def set_damage(self):
+    def set_damage(self, value):
         if self.healh > 0:
-            self.healh -= 1
+            self.healh -= value
         else :
             self.is_alive = False
     def get_shield(self): 
